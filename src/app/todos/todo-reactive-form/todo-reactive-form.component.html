@@ -1,0 +1,24 @@
+<p>todo-reactive-form works!</p>
+<form (ngSubmit)="addTodo()" [formGroup]="todoForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput name="title" formControlName="todoTitle" required>
+  </mat-form-field>
+
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" name="dueDate" formControlName="todoDueDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <br>
+
+  <mat-checkbox name="completed" formControlName="todoCompleted">Completed ?</mat-checkbox>
+  <br>
+
+  <button mat-flat-button color="primary" [disabled]='!todoForm.valid' >Ok</button>
+
+</form>
+

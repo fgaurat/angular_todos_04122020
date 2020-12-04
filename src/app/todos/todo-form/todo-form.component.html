@@ -1,0 +1,28 @@
+<h2>todo-form works!</h2>
+
+<form (ngSubmit)="addTodo()" #theTodoForm = "ngForm">
+  {{theTodoForm.status}}
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput name="title" [(ngModel)]='todoForm.title' required #theTitle= "ngModel"> {{theTitle.status}}
+  </mat-form-field>
+
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" name="dueDate" [(ngModel)]='todoForm.dueDate'>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <br>
+
+  <mat-checkbox [(ngModel)]='todoForm.completed' name="completed">Completed ?</mat-checkbox>
+  <br>
+
+  <button mat-flat-button color="primary" [disabled] = "!theTodoForm.valid" >Ok</button>
+
+</form>
+
+{{todoForm | json}}
